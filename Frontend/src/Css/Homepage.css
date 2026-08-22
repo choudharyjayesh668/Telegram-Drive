@@ -1,0 +1,185 @@
+.Navbar {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5.5rem;
+    flex: 1;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3rem;
+}
+.logo{
+    font-size: 2rem;
+    color: black;
+}
+a{
+    text-decoration: none;
+    color: Black;
+    font-size: 1.1rem;
+}
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 78vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 80px;
+    gap: 60px;
+}
+
+.heroleft {
+    flex: 1;
+}
+
+.heroleft h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.heroleft p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.heroleft button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.heroleft button:hover {
+    background: #01b1f7;
+    color: rgb(4, 4, 4);
+    transform: translateY(-2px);
+}
+
+.heroright {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.heroright img {
+    width: 100%;
+    max-width: 750px;
+    height: auto;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 25px;
+    }
+
+    .heroleft h1 {
+        font-size: 2.6rem;
+    }
+
+    .heroleft p {
+        font-size: 1rem;
+    }
+
+    .heroleft button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .heroright img {
+        max-width: 450px;
+    }
+}
+.footer {
+    width: 100%;
+    background: #111827;
+    color: #ffffff;
+    padding: 30px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+
+.footer p {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.footer a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.footer a:hover {
+    color: #229ED9; /* Telegram Blue */
+    transform: translateY(-2px);
+}
+
+.footer i {
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+        padding: 35px 20px;
+    }
+
+    .footer a {
+        justify-content: center;
+    }
+}
+.footer .fa-github {
+    color: white !important;
+}
+.footer .fa-telegram {
+    color: rgb(253, 253, 253) !important;
+}

@@ -1,0 +1,13 @@
+# Dependencies
+Backend/node_modules/
+Frontend/node_modules/
+
+# Environment variables
+Backend/.env
+Frontend/.env
+
+# macOS
+.DS_Store
+
+# Logs
+*.log

@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Manrope',sans-serif;
+}
+
+.signup-page {
+    background: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+
+.LeftDiv{
+    
+    width:48%;
+    padding:60px;
+    display:flex;
+    flex-direction:column;
+}
+
+.LeftDiv h2{
+    
+    /* margin-bottom:60px; */
+    font-size:34px;
+    font-weight:800;
+    color:#111827;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.LeftDiv h2 i{
+    color:#0c0c0c;
+    margin-right:10px;
+    font-size: 3rem;
+}
+
+.desc{
+    
+    margin-top:35px;
+    margin-bottom:45px;
+    color:#6b7280;
+    line-height:32px;
+    font-size:18px;
+}
+
+
+.LeftDiv form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.LeftDiv form{
+    position:relative;
+}
+
+.LeftDiv input{
+    width:100%;
+    height:72px;
+    border-radius:18px;
+    border:1px solid #ddd;
+    background:white;
+    padding-left:70px;
+    padding-right:25px;
+    font-size:18px;
+    outline:none;
+    transition:.25s;
+}
+
+.LeftDiv input:focus{
+    border-color:#229ED9;
+    box-shadow:0 0 0 4px rgba(34,158,217,.12);
+}
+
+.LeftDiv form i{
+    position:relative;
+    left:24px;
+    width:0;
+    color:#777;
+    font-size:22px;
+    z-index:5;
+}
+
+.LeftDiv form p{
+    color:#b2110e;
+    margin-left:15px;
+    margin-top:-10px;
+    font-size:14px;
+}
+
+
+.LeftDiv button{
+    height:68px;
+    border:none;
+    border-radius:18px;
+    margin-top:10px;
+    background:#121212;
+    color:white;
+    font-size:21px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.LeftDiv button:hover{
+    background:#000;
+    transform:translateY(-2px);
+}
+
+
+.LeftDiv>p:nth-last-child(3){
+    text-align:center;
+    color:#777;
+    margin:40px 0 25px;
+    position:relative;
+}
+
+.LeftDiv>p:nth-last-child(3)::before,
+.LeftDiv>p:nth-last-child(3)::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:1px;
+    background:#ddd;
+    top:50%;
+}
+
+.LeftDiv>p:nth-last-child(3)::before{
+    left:0;
+}
+
+.LeftDiv>p:nth-last-child(3)::after{
+    right:0;
+}
+
+
+.LeftDiv>.fa-google,
+.LeftDiv>.fa-telegram,
+.LeftDiv>.fa-github{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:1px solid #ddd;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    margin-right:18px;
+    margin-bottom:35px;
+    cursor:pointer;
+    transition:.3s;
+    background:white;
+}
+.socialIcons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+.fa-google{
+    color:#ea4335;
+    font-size: 2.5rem;
+}
+
+.fa-telegram{
+    color:#229ED9;
+    font-size: 2.5rem;
+}
+
+.fa-github{
+    color:#111;
+    font-size: 2.5rem;
+}
+
+.LeftDiv>.fa-google:hover,
+.LeftDiv>.fa-telegram:hover,
+.LeftDiv>.fa-github:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+}
+
+
+.LeftDiv>a{
+    color:black;
+    text-decoration:none;
+}
+
+.LeftDiv>p:last-child{
+    margin-top: 1rem;
+    color:#666;
+    line-height:20px;
+}
+
+.LeftDiv>p:last-child a{
+    color:#111;
+    font-weight:8700;
+    text-decoration:none;
+}
+
+
+.RightDiv{
+    width:55%;
+    background:rgba(255,255,255,.35);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    background:linear-gradient(
+        160deg,
+        #ffffff,
+        #f6f8fc
+    );
+    position:relative;
+}
+
+.RightDiv img{
+    width:500px;
+    max-width:100%;
+    margin-bottom:45px;
+}
+
+.RightDiv h1{
+    font-size:46px;
+    color:#111827;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.RightDiv>p{
+    width:80%;
+    text-align:center;
+    color:#6b7280;
+    line-height:32px;
+    font-size:18px;
+}
+
+/* Feature Cards */
+
+.RightDiv i{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    border:1px solid #e6e6e6;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    margin-right:15px;
+    color:#111;
+    background:white;
+}
+
+.RightDiv i+p{
+    display:inline-block;
+    width:auto;
+    font-size:18px;
+    margin-right:45px;
+    color:#444;
+    vertical-align:middle;
+}
+
+
+@media(max-width:1100px){
+
+.MainDiv{
+    flex-direction:column;
+    width:95%;
+}
+
+.LeftDiv,
+.RightDiv{
+    width:100%;
+}
+
+.RightDiv img{
+    width:70%;
+}
+
+.RightDiv h1{
+    text-align:center;
+}
+
+.RightDiv>p{
+    text-align:center;
+}
+}
+
+
+
+.MainDiv{
+    width:1400px;
+    height:950px;
+    margin:20px auto;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(25px);
+    border-radius:32px;
+    overflow:hidden;
+    display:flex;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.7);
+}
