@@ -1,62 +1,230 @@
+.Navbar {
+  position: sticky;
+  top: var(--space-4);
+  z-index: 10;
+  display: flex;
+  width: min(calc(100% - 32px), 1180px);
+  min-height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin: var(--space-4) auto var(--space-10);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid rgba(217, 226, 236, 0.82);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(20px);
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.left p {
+  margin: 0;
+  color: var(--color-text);
+  font-weight: 900;
+}
+
+.logo {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--color-primary);
+  box-shadow: var(--shadow-blue);
+}
+
+.logout {
+  min-height: 42px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-danger-soft);
+  border-radius: var(--radius-sm);
+  color: var(--color-danger);
+  background: #ffffff;
+  font-weight: 800;
+  transition:
+    transform 180ms var(--ease),
+    background-color 180ms var(--ease),
+    border-color 180ms var(--ease);
+}
+
+.logout:hover {
+  border-color: rgba(220, 38, 38, 0.3);
+  background: var(--color-danger-soft);
+  transform: translateY(-1px);
+}
+
+.Navbar ~ h1 {
+  width: min(calc(100% - 32px), 1180px);
+  margin: 0 auto var(--space-6);
+  color: var(--color-text);
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.Navbar ~ h1::after {
+  display: block;
+  max-width: 650px;
+  margin-top: var(--space-4);
+  color: var(--color-muted);
+  content: "Create folders, open your vaults, and keep files synced through your Telegram Drive workspace.";
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.Navbar ~ br {
+  display: none;
+}
+
+.Navbar ~ form {
+  display: flex;
+  width: min(calc(100% - 32px), 1180px);
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 auto var(--space-8);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.Navbar ~ form input {
+  flex: 1;
+  min-width: 0;
+  min-height: 52px;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  background: var(--color-surface-soft);
+  outline: 0;
+  padding: 0 var(--space-4);
+  font-weight: 700;
+}
+
+.Navbar ~ form input::placeholder {
+  color: var(--color-subtle);
+}
+
+.Navbar ~ form input:focus {
+  box-shadow: 0 0 0 4px rgba(34, 158, 217, 0.12);
+}
+
+.Navbar ~ form button {
+  min-height: 52px;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  background: var(--color-primary);
+  box-shadow: var(--shadow-blue);
+  font-weight: 900;
+  white-space: nowrap;
+  transition:
+    transform 180ms var(--ease),
+    background-color 180ms var(--ease);
+}
+
+.Navbar ~ form button:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
 .folders-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
-    padding: 20px;
-    box-sizing: border-box;
+  display: grid;
+  width: min(calc(100% - 32px), 1180px);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-4);
+  margin: 0 auto var(--space-16);
+}
+
+.folders-container:empty {
+  display: grid;
+  min-height: 260px;
+  place-items: center;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.folders-container:empty::before {
+  color: var(--color-muted);
+  content: "No folders yet. Create your first vault above.";
+  font-weight: 800;
 }
 
 .folder-card {
-    width: 100%;
-    height: 170px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 12px;
-    cursor: pointer;
-
-    transition: all 0.2s ease;
+  display: grid;
+  min-height: 190px;
+  place-items: center;
+  align-content: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+  transition:
+    transform 180ms var(--ease),
+    box-shadow 180ms var(--ease),
+    border-color 180ms var(--ease);
 }
 
 .folder-card:hover {
-    background-color: #f5f5f5;
-    transform: translateY(-3px);
+  border-color: rgba(34, 158, 217, 0.36);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-4px);
 }
 
 .folder-image {
-    width: 95px;
-    height: 95px;
-    object-fit: contain;
-    user-select: none;
-    pointer-events: none;
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 20px rgba(34, 158, 217, 0.16));
 }
 
 .folder-card p {
-    margin-top: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #222;
-    text-align: center;
-    word-break: break-word;
-}
-@media (max-width: 1200px) {
-    .folders-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  max-width: 100%;
+  margin: 0;
+  overflow: hidden;
+  color: var(--color-text);
+  font-weight: 900;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-@media (max-width: 900px) {
-    .folders-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
+@media (max-width: 640px) {
+  .Navbar {
+    top: var(--space-2);
+    width: min(calc(100% - 20px), 1180px);
+  }
 
-@media (max-width: 600px) {
-    .folders-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .Navbar ~ form {
+    width: min(calc(100% - 24px), 1180px);
+    flex-direction: column;
+  }
+
+  .Navbar ~ form input,
+  .Navbar ~ form button {
+    width: 100%;
+  }
+
+  .Navbar ~ h1,
+  .folders-container {
+    width: min(calc(100% - 24px), 1180px);
+  }
+
+  .folders-container {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  }
 }

@@ -10,10 +10,10 @@ const multer = require("multer");
 const upload = multer({
     storage: multer.memoryStorage(),
 });
-
+const  axios =require('axios');
 const app = express();
 
-app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
@@ -22,7 +22,7 @@ app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
 }));
-
+app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("MongoDB connected");
@@ -34,7 +34,8 @@ mongoose.connect(process.env.MONGO_URI)
 const User=require("./models/user");
 const IsLoggedIn=require("./middleware/IsLoggedIn");
 const Folder=require("./models/folder");
-const File = require("./models/file");
+const File=require("./models/File");
+const FormData = require("form-data");
 app.post("/signup",async(req,res)=>{
     try{
         const userData=req.body;
@@ -172,14 +173,169 @@ app.get("/folders/:id",IsLoggedIn,async(req,res)=>{
         });
     };
 });
-app.post("/upload",IsLoggedIn,upload.single("file"),async(req,res)=>{
+app.post("/upload/:folderId",IsLoggedIn,upload.single("file"),async(req,res)=>{
     const formdata=req.body;
-    console.log(req.file); 
-    console.log(formdata);
+    // console.log(req.file); 
+    // console.log(formdata);
+    const formData = new FormData();
+    formData.append("document", req.file.buffer, {
+        filename: req.file.originalname,
+        contentType: req.file.mimetype,
+    });
+    formData.append("chat_id", process.env.CHANNEL_ID);
+    // console.log(req.file.originalname);
+    // console.log(process.env.CHANNEL_ID);
+    try {
+    const response = await axios.post(
+        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendDocument`,
+        
+        formData,
+        {
+            headers: formData.getHeaders(),
+        },
+       
+    );
+    //  console.log(response.data.result.document);
+    const {folderId}=req.params;
+    // console.log(response.data.result);
+    const telegramFileId =
+    response.data.result.document?.file_id ||
+    response.data.result.video?.file_id;
+    const newFile=new File({
+        fileName:req.file.originalname,
+        telegramFileId,
+        messageId: response.data.result.message_id,
+        owner:req.userId,
+        folder:folderId,
+    });
+    await newFile.save();
+    console.log("Saved in MongoDB");
+    // console.log(response.data);
+
     res.status(200).json({
-        message:"Data Uploaded"
-    })
+        message: "File uploaded to Telegram",
+    });
+
+} catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+        message: "Upload failed",
+    });
+}
 })
+app.get("/folders/:folderId/files",IsLoggedIn,async(req,res)=>{
+    try{
+        const { folderId } = req.params;
+        const usersFiles=await File.find({owner:req.userId,folder:folderId});
+        res.status(201).json({
+            data:usersFiles,
+            message:"Files Shown",
+        });
+    }catch(err){
+        res.status(500).json({
+            message:err.message,
+        })
+    }
+});
+
+app.get("/files/:fileId/view",IsLoggedIn,async(req,res)=>{
+    const {fileId}=req.params;
+    const file=await File.findOne({_id: fileId,owner:req.userId});
+    if (!file) {
+        return res.status(404).json({
+            message: "File not found",
+        });
+    }
+    console.log(file.telegramFileId);
+    const response = await axios.get(
+    `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/getFile`,
+    {
+        params: {
+            file_id: file.telegramFileId,
+        },
+    }
+    );
+    const filePath = response.data.result.file_path;
+
+    const telegramUrl =`https://api.telegram.org/file/bot${process.env.TELEGRAM_BOT_TOKEN}/${filePath}`;
+    const telegramResponse = await axios.get(telegramUrl, {
+    responseType: "stream",
+});    
+res.setHeader(
+    "Content-Disposition",
+    `inline; filename="${file.fileName}"`
+);
+
+telegramResponse.data.pipe(res);
+});
+app.get("/files/:fileId/download",IsLoggedIn,async(req,res)=>{
+    const {fileId}=req.params;
+    const file=await File.findOne({_id: fileId,owner:req.userId});
+    if (!file) {
+        return res.status(404).json({
+            message: "File not found",
+        });
+    }
+    console.log(file.telegramFileId);
+    const response = await axios.get(
+    `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/getFile`,
+    {
+        params: {
+            file_id: file.telegramFileId,
+        },
+    }
+    );
+    const filePath = response.data.result.file_path;
+
+    const telegramUrl =`https://api.telegram.org/file/bot${process.env.TELEGRAM_BOT_TOKEN}/${filePath}`;
+    const telegramResponse = await axios.get(telegramUrl, {
+    responseType: "stream",
+});    
+res.setHeader(
+    "Content-Type",
+    telegramResponse.headers["content-type"] || "application/octet-stream"
+);
+
+res.setHeader(
+    "Content-Disposition",
+    `attachment; filename="${file.fileName}"`
+);
+
+telegramResponse.data.pipe(res);
+});
+app.delete("/files/:fileId", IsLoggedIn, async (req, res) => {
+    try{
+        const { fileId } = req.params;
+
+    const file = await File.findOne({
+        _id: fileId,
+        owner: req.userId,
+    });
+
+    if (!file) {
+        return res.status(404).json({
+            message: "File not found",
+        });
+    }
+    await axios.post(
+        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/deleteMessage`,
+        {
+            chat_id: process.env.CHANNEL_ID,
+            message_id: file.messageId,
+        }
+    );
+    await file.deleteOne();
+    res.status(200).json({
+        message: "File deleted successfully",
+    });
+    }catch(err){
+        console.log(err);
+        res.status(500).json({
+        message: err.message,
+    });
+    }
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

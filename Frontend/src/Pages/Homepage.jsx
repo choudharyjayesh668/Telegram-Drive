@@ -1,75 +1,36 @@
+import { motion } from "framer-motion";
+import "../Css/Homepage.css";
 
-import "../Css/Homepage.css"
-import Homepageimg from "../assets/Homepage.png"
-export default function Homepage(){
-    return(
-        <>
-            <div className="Navbar">
-                <div className="left">
-                    <i className="fa-brands fa-telegram logo"></i>
-                    <p>Telegram Drive</p>
+export default function Homepage() {
+    return (
+        <div className="homepage-root">
+            {/* Navbar */}
+            <nav className="navbar-wrapper">
+                <div className="nav-brand">Telegram Drive</div>
+                <div className="nav-actions">
+                    <a href="/login" className="btn btn-secondary">Sign In</a>
+                    <a href="/signup" className="btn btn-primary">Get Started</a>
                 </div>
-                <div className="middle">
-                    <a href="#">Feature</a>
-                    <a href="#">How it Works</a>
-                    <a href="#">Contact</a>
+            </nav>
+
+            {/* Hero */}
+            <section className="hero-section">
+                <div className="hero-content">
+                    <h1 className="hero-title">Your Files, Private by Default.</h1>
+                    <p>A fast, secure storage layer built on Telegram infrastructure.</p>
+                    <br />
+                    <a href="/signup" className="btn btn-primary">Get Started</a>
                 </div>
-                <div className="right">
-                    <a href="/login">Login</a>
-                    <a href="/signup">Create Account</a>
+                <div className="hero-visual">
+                    {/* Abstract visualization */}
                 </div>
-            </div>
-            <div className="hero">
-    <div className="heroleft">
-        <h1>
-            Your Files... <br />
-            Secured by Telegram
-        </h1>
+            </section>
 
-        <p>
-            Telegram Drive helps you store, access and share your
-            <br />
-            files securely in the cloud using your own Telegram storage.
-        </p>
-
-        <button>
-            Get Started
-            <i className="fa-solid fa-arrow-right"></i>
-        </button>
-    </div>
-
-    <div className="heroright">
-        <img src={Homepageimg} alt="Telegram Drive" />
-    </div>
-</div>
-<div className="footer">
-    <p>Get in Touch With Developer</p>
-
-    <a href="https://www.instagram.com/jayeshchoudhayy/" target="_blank" rel="noopener noreferrer">
-        <i className="fa-brands fa-instagram"></i>
-        Instagram
-    </a>
-
-    <a href="mailto:jayeshchoudhary9503@gmail.com">
-        <i className="fa-regular fa-envelope"></i>
-        Gmail
-    </a>
-
-    <a href="https://t.me/Jayesh_choudhayy" target="_blank" rel="noopener noreferrer">
-        <i className="fa-brands fa-telegram"></i>
-        Telegram
-    </a>
-
-    <a href="https://github.com/choudharyjayesh668" target="_blank" rel="noopener noreferrer">
-        <i className="fa-brands fa-github"></i>
-        GitHub
-    </a>
-
-    <a href="https://www.linkedin.com/in/jayesh-choudhary-8b7201360/" target="_blank" rel="noopener noreferrer">
-        <i className="fa-brands fa-linkedin"></i>
-        LinkedIn
-    </a>
-</div>
-        </>
-    )
+            {/* Trust Section */}
+            <section className="section-question">
+                <h2 className="section-title">Why trust us?</h2>
+                <p>Because we don't own your data. We only provide the pipeline.</p>
+            </section>
+        </div>
+    );
 }

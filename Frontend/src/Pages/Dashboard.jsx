@@ -74,8 +74,18 @@ export default function Dashboard(){
     }
     return(
         <>
+        <div className="Navbar">
+                <div className="left">
+                    <i className="fa-brands fa-telegram logo"></i>
+                    <p>Telegram Drive</p>
+                </div>
+                <div className="right">
+                    <button onClick={Logout} className="logout">Logout</button>
+                </div>
+            </div>
             <h1>Welcome To HomePage</h1>
-            <button onClick={Logout}>Logout</button><br /><br /><br />
+            <br /><br /><br />
+            
             <form onSubmit={handleCreateFolder}>
                 <input
                     type="text"
