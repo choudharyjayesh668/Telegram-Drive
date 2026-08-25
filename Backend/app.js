@@ -19,7 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: [
+        "http://localhost:5173",
+        "https://telegram-drive-sepia.vercel.app"
+    ],
     credentials: true
 }));
 app.use(express.json());
@@ -102,8 +105,8 @@ app.post("/login", async (req, res) => {
         )
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,    //TRUE in Production WiTH HTTPS
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 24 * 60 * 60 * 1000
         });
         res.status(200).json({
