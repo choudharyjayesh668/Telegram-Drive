@@ -39,7 +39,32 @@ export default function Folder() {
         }
         return "fa-regular fa-file-lines";
     };
+    const handleDownload = async (file) => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_URL}/files/${file._id}/download`,
+      {
+        responseType: "blob",
+        withCredentials: true,
+      }
+    );
 
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = file.fileName;
+
+    document.body.appendChild(link);
+    link.click();
+
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  } catch (err) {
+    console.error(err);
+    alert("Download failed");
+  }
+};
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -323,16 +348,14 @@ export default function Folder() {
                             </div>
 
                             <div className="file-actions-row">
-                                <a
-                                    href={`${import.meta.env.VITE_API_URL}/files/${file._id}/download`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="file-action-btn file-btn-download"
-                                    title="Download file"
-                                >
-                                    <i className="fa-solid fa-download"></i>
-                                    <span>Download</span>
-                                </a>
+                                <button
+  type="button"
+  className="file-action-btn file-btn-download"
+  onClick={() => handleDownload(file)}
+>
+  <i className="fa-solid fa-download"></i>
+  <span>Download</span>
+</button>
                                 <button 
                                     type="button"
                                     onClick={() => setFileToDelete(file)} 
