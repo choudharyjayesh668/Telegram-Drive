@@ -22,7 +22,8 @@ app.use(cors({
   origin: [
     "http://localhost:5173",
     "https://telegram-drive-sepia.vercel.app",
-    "https://telegram-drive-hv560fs16-jayesh-choudhary.vercel.app"
+    "https://telegram-drive-hv560fs16-jayesh-choudhary.vercel.app",
+    "https://telegram-drive-7y579sp3b-jayesh-choudhary.vercel.app"
   ],
   credentials: true
 }));
