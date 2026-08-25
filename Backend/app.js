@@ -274,11 +274,16 @@ app.get("/files/:fileId/view", IsLoggedIn, async (req, res) => {
         responseType: "stream",
     });
     res.setHeader(
-        "Content-Disposition",
-        `inline; filename="${file.fileName}"`
-    );
+    "Content-Type",
+    telegramResponse.headers["content-type"] || "application/octet-stream"
+);
 
-    telegramResponse.data.pipe(res);
+res.setHeader(
+    "Content-Disposition",
+    `inline; filename="${file.fileName}"`
+);
+
+telegramResponse.data.pipe(res);
 });
 app.get("/files/:fileId/download", IsLoggedIn, async (req, res) => {
     const { fileId } = req.params;
