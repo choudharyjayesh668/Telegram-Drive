@@ -166,15 +166,15 @@ export default function Folder() {
             }
         );
 
-        const blob = new Blob([response.data]);
-        const url = window.URL.createObjectURL(blob);
+        // response.data is already a Blob
+        const url = URL.createObjectURL(response.data);
 
         window.open(url, "_blank");
 
-        // Clean up later
         setTimeout(() => {
-            window.URL.revokeObjectURL(url);
+            URL.revokeObjectURL(url);
         }, 1000);
+
     } catch (err) {
         console.error(err);
         alert("Unable to preview file.");
