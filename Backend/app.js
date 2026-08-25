@@ -19,11 +19,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "https://telegram-drive-sepia.vercel.app"
-    ],
-    credentials: true
+  origin: [
+    "http://localhost:5173",
+    "https://telegram-drive-sepia.vercel.app",
+    "https://telegram-drive-hv560fs16-jayesh-choudhary.vercel.app"
+  ],
+  credentials: true
 }));
 app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
