@@ -7,9 +7,12 @@ import Dashboard from './Pages/Dashboard';
 import Homepage from './Pages/Homepage';
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import Folder from "./Pages/Folder";
+import CustomCursor from "./Components/CustomCursor";
+
 function App() {
   return (
     <>
+     <CustomCursor />
      <BrowserRouter>
      <Routes>
       <Route path="/" element={<Homepage />} />

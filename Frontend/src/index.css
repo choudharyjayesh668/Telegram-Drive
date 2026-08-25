@@ -1,0 +1,185 @@
+/* ==========================================================================
+   PORTFOLIO-MAIN INSPIRED LUXURY DARK DESIGN SYSTEM
+   Theme: Obsidian (#0a0a0a), Alabaster (#f0ede6), Warm Gold (#c8a97e)
+   ========================================================================== */
+
+:root {
+  /* Core Palette (from portfolio-main) */
+  --color-canvas: #0a0a0a;
+  --color-surface: #121212;
+  --color-surface-elevated: #171717;
+  --color-surface-glass: rgba(18, 18, 18, 0.82);
+  --color-surface-glass-card: rgba(24, 24, 24, 0.75);
+
+  /* Typography Colors */
+  --text-primary: #f0ede6;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
+  --text-subtle: #525252;
+  --text-inverse: #0a0a0a;
+
+  /* Accent Tones */
+  --accent-gold: #c8a97e;
+  --accent-gold-hover: #d4b88f;
+  --accent-gold-subtle: rgba(200, 169, 126, 0.12);
+  --accent-gold-border: rgba(200, 169, 126, 0.35);
+  --accent-gradient: linear-gradient(135deg, #c8a97e 0%, #f0ede6 100%);
+  --accent-gold-glow: 0 0 25px rgba(200, 169, 126, 0.2);
+
+  /* Telegram Cyan Blend */
+  --brand-telegram: #24A1DE;
+  --brand-telegram-subtle: rgba(36, 161, 222, 0.15);
+
+  /* Status Colors */
+  --color-danger: #f87171;
+  --color-danger-hover: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.1);
+  --color-danger-border: rgba(239, 68, 68, 0.25);
+  --color-success: #34d399;
+  --color-success-bg: rgba(52, 211, 153, 0.1);
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  /* Fonts */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.7);
+  --shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(200, 169, 126, 0.12);
+  --shadow-gold: 0 8px 24px rgba(200, 169, 126, 0.22);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 160ms var(--ease-smooth);
+  --transition-normal: 260ms var(--ease-smooth);
+  --transition-spring: 360ms var(--ease-smooth);
+}
+
+/* Base Document Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--color-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-canvas);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Ambient Radial Glow Orb */
+body::before {
+  content: '';
+  position: fixed;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(200, 169, 126, 0.09) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Scrollbar (Exact from portfolio-main) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c8a97e;
+}
+
+/* Reset Links & Buttons */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  transition: all var(--transition-spring);
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Luxury Text Gradient Utility */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f0ede6 30%, #c8a97e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes goldGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(200, 169, 126, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(200, 169, 126, 0.3);
+  }
+}
+
+/* Interactive Pointer Styles */
+a, button, input[type="submit"], input[type="button"], .folder-card, .file-item-card, .file-info-top {
+  cursor: pointer;
+}

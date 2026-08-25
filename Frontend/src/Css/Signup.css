@@ -1,0 +1,270 @@
+/* ==========================================================================
+   AUTHENTICATION (SIGNUP & LOGIN) - PORTFOLIO-MAIN LUXURY DARK STYLES
+   Theme: Obsidian (#0a0a0a), Alabaster (#f0ede6), Warm Gold (#c8a97e)
+   ========================================================================== */
+
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: var(--color-canvas);
+}
+
+/* Luxury Dark Modal Card */
+.MainDiv {
+  display: flex;
+  width: min(100%, 460px);
+  background: var(--color-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-hover), 0 0 40px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 0.35s ease-out;
+}
+
+.RightDiv {
+  display: none;
+}
+
+/* Form Container */
+.LeftDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 48px 40px;
+}
+
+.LeftDiv h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.LeftDiv h2 i {
+  color: var(--accent-gold);
+  font-size: 1.6rem;
+}
+
+.LeftDiv .desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.LeftDiv form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Floating Input Box */
+.inputBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #181818;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.inputBox:focus-within {
+  background: #1f1f1f;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.15);
+}
+
+.inputBox i {
+  position: absolute;
+  left: 16px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.inputBox:focus-within i {
+  color: var(--accent-gold);
+}
+
+.inputBox input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 44px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.inputBox input::placeholder {
+  color: var(--text-subtle);
+}
+
+/* Validation Errors */
+.error {
+  min-height: 14px;
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: var(--color-danger);
+  margin: -4px 0 2px 4px;
+  line-height: 1.2;
+}
+
+.error:empty {
+  display: none;
+}
+
+/* Submit Button */
+.LeftDiv form button[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-canvas);
+  background: var(--text-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: all var(--transition-spring);
+  cursor: pointer;
+}
+
+.LeftDiv form button[type="submit"]:hover {
+  background: var(--accent-gold);
+  color: var(--color-canvas);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+.LeftDiv form button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Auth Switch Link */
+.switchAuth {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+}
+
+.switchAuth a {
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.switchAuth a:hover {
+  text-decoration: underline;
+  color: var(--accent-gold-hover);
+}
+
+/* Continue with Divider */
+.continueText {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 22px 0 16px;
+}
+
+.continueText::before,
+.continueText::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.continueText:not(:empty)::before {
+  margin-right: 12px;
+}
+
+.continueText:not(:empty)::after {
+  margin-left: 12px;
+}
+
+/* Social Buttons */
+.socialIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.socialIcons i {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  background: #181818;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-spring);
+}
+
+.socialIcons i:hover {
+  color: var(--accent-gold);
+  background: #202020;
+  border-color: var(--accent-gold-border);
+  box-shadow: 0 0 16px rgba(200, 169, 126, 0.2);
+  transform: translateY(-1px);
+}
+
+.socialIcons i:active {
+  transform: scale(0.95);
+}
+
+/* Terms Footer */
+.terms {
+  text-align: center;
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.terms a {
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .LeftDiv {
+    padding: 36px 24px;
+  }
+}

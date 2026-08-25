@@ -23,7 +23,12 @@ export default function ProtectedRoute({ children }) {
     }, []);
 
     if (loading) {
-        return <h2>Loading...</h2>;
+        return (
+            <div className="app-loader-container">
+                <div className="app-loader-spinner"></div>
+                <p className="app-loader-text">Loading Telegram Drive...</p>
+            </div>
+        );
     }
 
     if (!isAuthenticated) {

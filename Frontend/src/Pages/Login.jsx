@@ -107,6 +107,10 @@ export default function Login(){
                                 Login Account
                             </button>
                         </form>
+                        <p className="switchAuth">
+                            Don't have an account?{" "}
+                            <a href="/signup">Create account</a>
+                        </p>
                         <p className="continueText">
                              or Continue with 
                         </p>
@@ -116,7 +120,7 @@ export default function Login(){
                             <i className="fa-brands fa-github"></i>
                         </div>
                         <p className="terms">
-                            By Loging in an account you agree to our{" "}
+                            By Logging in to an account you agree to our{" "}
                             <a href="#">Terms of Service</a> and{" "}
                             <a href="#">Privacy Policy</a>.
                         </p>

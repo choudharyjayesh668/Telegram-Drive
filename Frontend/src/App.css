@@ -1,0 +1,39 @@
+/* ==========================================================================
+   APP GLOBAL WRAPPER & LUXURY LOADER
+   Theme: Obsidian (#0a0a0a), Alabaster (#f0ede6), Warm Gold (#c8a97e)
+   ========================================================================== */
+
+/* Dark Luxury Spinner Loader */
+.app-loader-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--color-canvas);
+}
+
+.app-loader-spinner {
+  width: 38px;
+  height: 38px;
+  border: 3px solid rgba(200, 169, 126, 0.15);
+  border-top-color: var(--accent-gold);
+  border-radius: 50%;
+  animation: luxurySpin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.app-loader-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@keyframes luxurySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

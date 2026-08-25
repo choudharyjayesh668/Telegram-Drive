@@ -158,6 +158,10 @@ export default function Signup(){
                     Create Account
                 </button>
             </form>
+            <p className="switchAuth">
+                Already have an account?{" "}
+                <a href="/login">Sign in</a>
+            </p>
             <p className="continueText">
                  or Continue with 
             </p>
