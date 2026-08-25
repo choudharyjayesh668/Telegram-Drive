@@ -19,13 +19,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://telegram-drive-sepia.vercel.app",
-    "https://telegram-drive-hv560fs16-jayesh-choudhary.vercel.app",
-    "https://telegram-drive-7y579sp3b-jayesh-choudhary.vercel.app"
-  ],
-  credentials: true
+  origin: (origin, callback) => {
+    if (
+      !origin ||
+      origin === "http://localhost:5173" ||
+      origin.endsWith(".vercel.app")
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
 }));
 app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
