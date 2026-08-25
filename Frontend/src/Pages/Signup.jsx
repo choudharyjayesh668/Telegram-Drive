@@ -71,7 +71,7 @@ export default function Signup(){
                 return;
             }
             const response=await axios.post(
-                "http://localhost:3000/signup",
+                `${import.meta.env.VITE_API_URL}/signup`,
                 userData,
             );
             navigate("/login")

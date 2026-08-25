@@ -75,7 +75,7 @@ export default function Folder() {
 
         try {
             await axios.post(
-                `http://localhost:3000/upload/${id}`,
+                `${import.meta.env.VITE_API_URL}/upload/${id}`,
                 formData,
                 {
                     withCredentials: true,
@@ -106,7 +106,7 @@ export default function Folder() {
 
     const fetchFolderInfo = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/folders/${id}`, {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/folders/${id}`, {
                 withCredentials: true,
             });
             if (response.data?.data) {
@@ -120,7 +120,7 @@ export default function Folder() {
     const fetchFiles = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/folders/${id}/files`,
+                `${import.meta.env.VITE_API_URL}/folders/${id}/files`,
                 {
                     withCredentials: true,
                 }
@@ -133,7 +133,7 @@ export default function Folder() {
 
     const handleView = async (fileId) => {
         window.open(
-            `http://localhost:3000/files/${fileId}/view`,
+            `${import.meta.env.VITE_API_URL}/files/${fileId}/view`,
             "_blank"
         );
     };
@@ -143,7 +143,7 @@ export default function Folder() {
         setIsDeleting(true);
         try {
             await axios.delete(
-                `http://localhost:3000/files/${fileToDelete._id}`,
+                `${import.meta.env.VITE_API_URL}/files/${fileToDelete._id}`,
                 {
                     withCredentials: true,
                 }
@@ -324,7 +324,7 @@ export default function Folder() {
 
                             <div className="file-actions-row">
                                 <a
-                                    href={`http://localhost:3000/files/${file._id}/download`}
+                                    href={`${import.meta.env.VITE_API_URL}/files/${file._id}/download`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="file-action-btn file-btn-download"

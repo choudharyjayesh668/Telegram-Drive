@@ -21,7 +21,7 @@ export default function Dashboard() {
     const Logout = async () => {
         try {
             await axios.post(
-                "http://localhost:3000/logout",
+                `${import.meta.env.VITE_API_URL}/logout`,
                 {},
                 { withCredentials: true }
             );
@@ -37,7 +37,7 @@ export default function Dashboard() {
 
     const fetchFolders = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/folders", {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/folders`, {
                 withCredentials: true,
             });
             setCreatedFolder(response.data.data || []);
@@ -58,7 +58,7 @@ export default function Dashboard() {
 
         try {
             await axios.post(
-                "http://localhost:3000/createFolder",
+                `${import.meta.env.VITE_API_URL}/createFolder`,
                 foldercreation,
                 { withCredentials: true }
             );
@@ -92,7 +92,7 @@ export default function Dashboard() {
 
         try {
             await axios.patch(
-                `http://localhost:3000/folders/${folderToRename._id}`,
+                `${import.meta.env.VITE_API_URL}/folders/${folderToRename._id}`,
                 { folderName: newFolderName.trim() },
                 { withCredentials: true }
             );
@@ -121,7 +121,7 @@ export default function Dashboard() {
         setIsSubmitting(true);
         try {
             await axios.delete(
-                `http://localhost:3000/folders/${folderToDelete._id}`,
+                `${import.meta.env.VITE_API_URL}/${folderToDelete._id}`,
                 { withCredentials: true }
             );
             setFolderToDelete(null);

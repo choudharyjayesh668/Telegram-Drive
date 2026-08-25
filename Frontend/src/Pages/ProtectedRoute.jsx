@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children }) {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/Dashboard", {
+            .get(`${import.meta.env.VITE_API_URL}/Dashboard`, {
                 withCredentials: true,
             })
             .then(() => {
