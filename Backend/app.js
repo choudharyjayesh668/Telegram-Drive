@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGO_URI)
 const User = require("./models/user");
 const IsLoggedIn = require("./middleware/IsLoggedIn");
 const Folder = require("./models/folder");
-const File = require("./models/File");
+const File = require("./models/file");
 const FormData = require("form-data");
 app.post("/signup", async (req, res) => {
     try {
