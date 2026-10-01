@@ -379,3 +379,298 @@
     padding: 16px;
   }
 }
+.migration-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+
+  padding: 20px;
+}
+
+.migration-popup {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+
+  padding: 40px 32px 32px;
+
+  background: #ffffff;
+  border-radius: 24px;
+
+  text-align: center;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+
+  animation: popupIn 0.25s ease-out;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #f3f4f6;
+
+  font-size: 30px;
+}
+
+.migration-popup h2 {
+  margin: 0 0 12px;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.migration-popup p {
+  margin: 0 auto 10px;
+
+  max-width: 380px;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  color: #4b5563;
+}
+
+.migration-popup strong {
+  color: #111827;
+}
+
+.subtext {
+  font-size: 14px !important;
+  color: #6b7280 !important;
+}
+
+.redirect-btn {
+  width: 100%;
+
+  margin-top: 24px;
+  padding: 14px 20px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #111827;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.redirect-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.stay-btn {
+  margin-top: 14px;
+
+  border: none;
+  background: transparent;
+
+  color: #6b7280;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.stay-btn:hover {
+  color: #111827;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #6b7280;
+
+  font-size: 22px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .migration-popup {
+    padding: 36px 22px 24px;
+  }
+
+  .migration-popup h2 {
+    font-size: 22px;
+  }
+}
+.migration-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.migration-popup {
+  width: 100%;
+  max-width: 440px;
+
+  padding: 40px 32px 32px;
+
+  text-align: center;
+
+  background: #ffffff;
+  border-radius: 24px;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+
+  animation: migrationPopupIn 0.3s ease-out;
+}
+
+.migration-icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+  background: #f3f4f6;
+
+  font-size: 30px;
+}
+
+.migration-popup h2 {
+  margin: 0 0 14px;
+
+  color: #111827;
+
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.migration-popup p {
+  max-width: 370px;
+
+  margin: 0 auto 10px;
+
+  color: #4b5563;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.migration-popup strong {
+  color: #111827;
+}
+
+.migration-subtext {
+  color: #6b7280 !important;
+  font-size: 14px !important;
+}
+
+.migration-button {
+  width: 100%;
+
+  margin-top: 24px;
+  padding: 14px 20px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.migration-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.migration-button:active {
+  transform: translateY(0);
+}
+
+@keyframes migrationPopupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .migration-popup {
+    padding: 36px 22px 26px;
+  }
+
+  .migration-popup h2 {
+    font-size: 22px;
+  }
+}
